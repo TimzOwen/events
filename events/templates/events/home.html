@@ -1,4 +1,7 @@
-<div style="text-align: center;">
+{% extends 'events/base.html' %}
+
+{% block content %}
+<center>
 <h1>Welcome to our events </h1>
 <h3>Events happen each month in {{month}} in {{year}}</h3>
     <br>
@@ -6,4 +9,5 @@
 <h1>{{cal | safe}}</h1>
     <br><br><br>
     Copyright (c) {{current_year}}
-</div>
+</center>
+{% endblock %}
