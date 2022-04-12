@@ -7,6 +7,14 @@ from .forms import VenueForm
 from django.http import HttpResponseRedirect
 
 
+def search_venues(request):
+    if request.method == "POST":
+        searched = request.POST.get('searched')
+        return render(request, 'events/search_venues.html', {'searched': searched})
+    else:
+        return render(request, 'events/search_venues.html')
+
+
 def show_venue(request, venue_id):
     venue = Venue.objects.get(pk=venue_id)
     return render(request, 'events/show_venue.html', {'venue': venue})
@@ -55,6 +63,5 @@ def home(request, year=datetime.now().year, month=datetime.now().strftime('%B'))
         'month_number': month_number,
         'cal': cal,
         'current_year': current_year,
-        'time': time
-
+        'time': time,
     })
