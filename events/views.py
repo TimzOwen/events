@@ -7,6 +7,10 @@ from .forms import VenueForm
 from django.http import HttpResponseRedirect
 
 
+def add_event(request):
+    # copy from add venue and adjust arcordingly
+
+
 def update_venue(request, venue_id):
     venue = Venue.objects.get(pk=venue_id)
     form = VenueForm(request.POST or None, instance=venue)
