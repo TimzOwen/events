@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 import calendar
 from calendar import HTMLCalendar
 from datetime import datetime
@@ -8,8 +8,7 @@ from django.http import HttpResponseRedirect
 
 
 def add_event(request):
-    # copy from add venue and adjust arcordingly
-
+    return render(request,'events/add_venut.html',{})
 
 def update_venue(request, venue_id):
     venue = Venue.objects.get(pk=venue_id)
