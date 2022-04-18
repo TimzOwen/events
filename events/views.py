@@ -1,14 +1,15 @@
+from django.http import HttpResponseRedirect, HttpResponse, FileResponse
 from django.shortcuts import render, redirect
-import calendar
+from django.core.paginator import Paginator
 from calendar import HTMLCalendar
 from datetime import datetime
 from .models import Event, Venue
 from .forms import VenueForm, EventForm
-from django.http import HttpResponseRedirect, HttpResponse, FileResponse
-import io
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import letter
+import calendar
+import io
 import csv
 
 
@@ -22,7 +23,7 @@ def venue_pdf(request):
     text_object.setTextOrigin(inch, inch)
     text_object.setFont("Helvetica", 14)
     venues = Venue.objects.all()
-    lines=[]
+    lines = []
     for venue in venues:
         lines.append(venue.name)
         lines.append(venue.address)
@@ -38,7 +39,7 @@ def venue_pdf(request):
     c.save()
     buf.seek(0)
 
-    return FileResponse(buf,as_attachment=True, filename='venues.pdf')
+    return FileResponse(buf, as_attachment=True, filename='venues.pdf')
 
 
 def venue_csv(request):
@@ -125,7 +126,12 @@ def show_venue(request, venue_id):
 
 def list_venues(request):
     venue_list = Venue.objects.all().order_by("name")
-    return render(request, 'events/venue.html', {'venue_list': venue_list})
+    paginator = Paginator(Venue.objects.all(), 3)
+    page = request.GET.get('page')
+    venues = paginator.get_page(page)
+    return render(request, 'events/venue.html',
+                  {'venue_list': venue_list,
+                   'venues': venues})
 
 
 def add_venue(request):
