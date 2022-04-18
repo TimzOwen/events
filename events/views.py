@@ -11,7 +11,11 @@ from django.http import HttpResponse
 def venue_text(request):
     response = HttpResponse(content_type='text/plain')
     response['Content-Disposition'] = 'attachment; filename=venues.txt'
-    lines = ['this is line 1\n','this is line 2\n','this is line 3\n','this is last line']
+    lines = []  # create an empty list to append to the list of venues
+    venues = Venue.objects.all()
+    for venue in venues:
+        lines.append(f'{venue.name}\n{venue.address}\n'
+                     f'{venue.zip_code}\n{venue.phone}\n{venue.web}\n{venue.email_address}\n\n\n')
     response.writelines(lines)
     return response
 
