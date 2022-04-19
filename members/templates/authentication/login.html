@@ -1,7 +1,12 @@
 {% extends 'events/base.html' %}
 {% block content %}
     <h1>Login</h1>
-    <br><br>
+    <br>
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
     <form action="" method="POST">
         {% csrf_token %}
         <div class="mb-3">
