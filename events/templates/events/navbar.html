@@ -8,37 +8,47 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'home' '2025' 'December' %}">December</a>
+                    <a class="nav-link" href="{% url 'home' '2025' 'December' %}">Calender</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'list-events' %}">Events</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Events
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                        <li><a class="dropdown-item" href="{% url 'list-events' %}">All Events</a></li>
+                        <li><a class="dropdown-item" href="{% url 'add-event' %}">Add Event</a></li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'add-venue' %}">Add Venue</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Venues
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                        <li><a class="dropdown-item" href="{% url 'list-venues' %}">All Venues</a></li>
+                        <li><a class="dropdown-item" href="{% url 'add-venue' %}">Add Venue</a></li>
+                    </ul>
                 </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'add-event' %}">Add Event</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'list-venues' %}">Venues</a>
-                </li>
-                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'venue_text' %}">Venue TextFile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'venue_csv' %}">Venue Csv</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'venue_pdf' %}">Venue Pdf</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Downloads
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                        <li><a class="dropdown-item" href="{% url 'venue_text' %}">Venue TextFile</a></li>
+                        <li><a class="dropdown-item" href="{% url 'venue_csv' %}">Venue Csv</a></li>
+                        <li><a class="dropdown-item" href="{% url 'venue_pdf' %}">Venue Pdf</a></li>
+                    </ul>
                 </li>
                 {% if user.is_authenticated %}
-                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    </li>
                 {% else %}
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">Login</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
                 {% endif %}
             </ul>
             <form class="d-flex" method=POST action="{% url 'search-venues' %}">
