@@ -19,11 +19,12 @@
                 </li>
             </ul>
             </p>
-            <div class="card-footer text-muted">
-                <a href="{% url 'update-event' event.id %}" class="btn btn-outline-secondary">Update Event</a>
-                <a href="{% url 'delete-event' event.id %}" class="btn btn-outline-danger">Delete Event</a>
-            </div>
-
+            {% if user.is_authenticated %}
+                <div class="card-footer text-muted">
+                    <a href="{% url 'update-event' event.id %}" class="btn btn-outline-secondary">Update Event</a>
+                    <a href="{% url 'delete-event' event.id %}" class="btn btn-outline-danger">Delete Event</a>
+                </div>
+            {% endif %}
         </div>
         <br><br>
     {% endfor %}
