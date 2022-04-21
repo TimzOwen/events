@@ -2,15 +2,23 @@
 {% block content %}
     {% if user.is_authenticated %}
         <h1>Update Event.......</h1><br>
-        <br>
-        <form action="" method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <br>
-            <input type="submit" value="Update" class="btn btn-secondary">
-        </form>
+        Logged in User: {{ user }}<br>
+         Event Manager {{ event.manager }}<br>
+        {% if user == event.manager %}
+
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <br>
+                <input type="submit" value="Update" class="btn btn-secondary">
+            </form>
+        {% else %}
+            <h2>You can't update,Only Managers can update</h2>
+        {% endif %}
     {% else %}
-    <h2>You have to be logged in</h2>
-    <a href="{% url 'login' %}">Login here</a>
+        <h2>You have to be logged in</h2>
+        <h1>Sorry you are not the event manager</h1>
+
+        <a href="{% url 'login' %}">Login here</a>
     {% endif %}
 {% endblock %}
