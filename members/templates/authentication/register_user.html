@@ -6,10 +6,12 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     {% endif %}
-    <h1>Register Account</h1><br>
+    <div class="shadow p-4 mb-5 bg-body rounded">
+    <h1>Register Membership</h1><br>
     <form action="{% url 'register_user' %}" method="POST">
     {% csrf_token %}
         {{ form.as_p }}
     <input type="submit" value="Submit" class="btn btn-secondary">
     </form>
+    </div>
 {% endblock %}
