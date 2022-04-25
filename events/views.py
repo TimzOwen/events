@@ -133,7 +133,7 @@ def list_venues(request):
     return render(request, 'events/venue.html',
                   {'venue_list': venue_list,
                    'venues': venues,
-                   'nums':nums})
+                   'nums': nums})
 
 
 def add_venue(request):
@@ -176,3 +176,12 @@ def home(request, year=datetime.now().year, month=datetime.now().strftime('%B'))
         'current_year': current_year,
         'time': time,
     })
+
+
+def our_sponsors(request):
+    context = {
+        'name':'GDSC',
+        'sponsor': 'Google',
+        'amount': 1000000
+    }
+    return render(request, template_name='events/sponsors.html', context=context)
