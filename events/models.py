@@ -9,7 +9,7 @@ class Venue(models.Model):
     phone = models.CharField('Contact Phone', max_length=120, blank=True)
     web = models.URLField('Website Address', blank=True)
     email_address = models.EmailField('Email address', blank=True)
-    owner = models.IntegerField("venue owner",blank=False,default=1)
+    owner = models.IntegerField("venue owner", blank=False, default=1)
 
     def __str__(self):
         return self.name
@@ -22,6 +22,17 @@ class MyClubUsers(models.Model):
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
+
+
+class Speakers(models.Model):
+    speaker_name = models.CharField(max_length=255)
+    speaker_role = models.CharField(max_length=255)
+    speaker_topic = models.CharField(max_length=255)
+    speaker_email = models.EmailField('email address')
+    speaker_contact = models.IntegerField('phone number', default=1)
+
+    def __str__(self):
+        return self.speaker_name
 
 
 class Event(models.Model):

@@ -18,5 +18,6 @@ urlpatterns = [
     path('venue_csv', views.venue_csv, name='venue_csv'),
     path('venue_pdf', views.venue_pdf, name='venue_pdf'),
     path('our-sponsors', views.our_sponsors, name='our-sponsors'),
+    path('become_sponsor', views.become_sponsor, name='become_sponsor'),
 
 ]

@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Venue, Event
+from .models import Venue, Event, Speakers
 
 
 class EventForm(ModelForm):
@@ -16,12 +16,12 @@ class EventForm(ModelForm):
             'description': 'Description',
         }
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control','placeholder':'Event Name'}),
-            'event_date': forms.TextInput(attrs={'class': 'form-control','placeholder':'Event Date'}),
-            'venue': forms.Select(attrs={'class': 'form-select','placeholder':'Event Venue'}),
-            'manager': forms.Select(attrs={'class': 'form-select','placeholder':'Event Manager'}),
-            'attendees': forms.SelectMultiple(attrs={'class': 'form-control','placeholder':'Event attendees'}),
-            'description': forms.Textarea(attrs={'class': 'form-control','placeholder':'Event description'}),
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Event Name'}),
+            'event_date': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Event Date'}),
+            'venue': forms.Select(attrs={'class': 'form-select', 'placeholder': 'Event Venue'}),
+            'manager': forms.Select(attrs={'class': 'form-select', 'placeholder': 'Event Manager'}),
+            'attendees': forms.SelectMultiple(attrs={'class': 'form-control', 'placeholder': 'Event attendees'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Event description'}),
         }
 
 
@@ -38,10 +38,26 @@ class VenueForm(ModelForm):
             'email_address': '',
         }
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control','placeholder':'Event Venue'}),
-            'address': forms.TextInput(attrs={'class': 'form-control','placeholder':'Event Address'}),
-            'zip_code': forms.TextInput(attrs={'class': 'form-control','placeholder':'Event Zip Code'}),
-            'phone': forms.TextInput(attrs={'class': 'form-control','placeholder':'Organizer Phone number'}),
-            'web': forms.TextInput(attrs={'class': 'form-control','placeholder':'Web URL Event'}),
-            'email_address': forms.EmailInput(attrs={'class': 'form-control','placeholder':'Email to event'}),
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Event Venue'}),
+            'address': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Event Address'}),
+            'zip_code': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Event Zip Code'}),
+            'phone': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Organizer Phone number'}),
+            'web': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Web URL Event'}),
+            'email_address': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email to event'}),
+        }
+
+
+class SpeakerForm(forms.Form):
+    class Meta:
+        model = Speakers
+        fields = ('speaker_name', 'speaker_role', 'speaker_topic', 'speaker_email', 'speaker_contact')
+        labels = {
+            'Name',
+            'role',
+            'topic',
+            'Email',
+            'Contact'
+        }
+        widgets = {
+
         }

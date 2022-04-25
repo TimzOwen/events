@@ -180,8 +180,15 @@ def home(request, year=datetime.now().year, month=datetime.now().strftime('%B'))
 
 def our_sponsors(request):
     context = {
-        'name':'GDSC',
+        'name': 'GDSC',
         'sponsor': 'Google',
         'amount': 1000000
     }
     return render(request, template_name='events/sponsors.html', context=context)
+
+
+def become_sponsor(request):
+    context = {
+        'name': 'tester'
+    }
+    return render(request, template_name='events/become_sponsor.html', context=context)
