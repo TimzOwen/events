@@ -3,8 +3,8 @@ from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from calendar import HTMLCalendar
 from datetime import datetime
-from .models import Event, Venue
-from .forms import VenueForm, EventForm
+from .models import Event, Venue, Speakers
+from .forms import VenueForm, EventForm, SpeakerForm
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import letter
@@ -180,15 +180,35 @@ def home(request, year=datetime.now().year, month=datetime.now().strftime('%B'))
 
 def our_sponsors(request):
     context = {
-        'name': 'GDSC',
+        'name': 'DSC',
         'sponsor': 'Google',
         'amount': 1000000
     }
     return render(request, template_name='events/sponsors.html', context=context)
 
 
+def become_speaker(request):
+    submitted = False
+    if request.method == "POST":
+        form = SpeakerForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = SpeakerForm
+        if 'submitted' in request.GET:
+            submitted = True
+    return render(request, 'events/become_speaker.html', {'form': form, 'submitted': submitted})
+
+
 def become_sponsor(request):
-    context = {
-        'name': 'tester'
-    }
-    return render(request, template_name='events/become_sponsor.html', context=context)
+    submitted = False
+    if request.method == "POST":
+        form = EventForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/add_event?submitted=True')
+    else:
+        form = EventForm
+        if 'submitted' in request.GET:
+            submitted = True
+    return render(request, 'events/add_event.html', {'form': form, 'submitted': submitted})

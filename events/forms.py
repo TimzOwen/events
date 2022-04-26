@@ -47,17 +47,22 @@ class VenueForm(ModelForm):
         }
 
 
-class SpeakerForm(forms.Form):
+class SpeakerForm(ModelForm):
     class Meta:
         model = Speakers
         fields = ('speaker_name', 'speaker_role', 'speaker_topic', 'speaker_email', 'speaker_contact')
         labels = {
-            'Name',
+            'name',
             'role',
             'topic',
-            'Email',
-            'Contact'
+            'email',
+            'contact'
         }
         widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Speaker Name'}),
+            'role': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'speaker Role'}),
+            'topic': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Topic'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'}),
+            'contact': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Contact'})
 
         }

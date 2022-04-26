@@ -19,5 +19,6 @@ urlpatterns = [
     path('venue_pdf', views.venue_pdf, name='venue_pdf'),
     path('our-sponsors', views.our_sponsors, name='our-sponsors'),
     path('become_sponsor', views.become_sponsor, name='become_sponsor'),
+    path('become_speaker', views.become_speaker, name='become_speaker'),
 
 ]
