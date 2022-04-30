@@ -22,3 +22,4 @@ urlpatterns = [
     path('become_speaker', views.become_speaker, name='become_speaker'),
 
 ]
+

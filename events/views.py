@@ -135,7 +135,6 @@ def list_venues(request):
                    'venues': venues,
                    'nums': nums})
 
-
 def add_venue(request):
     submitted = False
     if request.method == "POST":

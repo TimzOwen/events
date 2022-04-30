@@ -18,3 +18,16 @@ class RegisterUserForm(UserCreationForm):
         self.fields['username'].widget.attrs['class'] = 'form-control'
         self.fields['password1'].widget.attrs['class'] = 'form-control'
         self.fields['password2'].widget.attrs['class'] = 'form-control'
+
+
+class PaymentsFormClients(forms.Form):
+    payment_choices = (('andela','andela'),
+    ('cbk','cbk'))
+
+    payments_company = forms.ChoiceField(choices=payment_choices,
+                                        widget=forms.Select(
+                                            attrs={
+                                                'class':'form-control',
+
+                                            }
+                                        ))
