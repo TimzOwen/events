@@ -1,0 +1,62 @@
+
+{% block content %}
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>payments</title>
+    </head>
+    <body>
+
+    <h2>{{ form.payment_choices }}</h2>
+    <div id="">
+        <!-- begin wizard step-1 -->
+        <div class="wizard-step-1">
+            <fieldset>
+                <!-- begin col-6 -->
+                <table id="assessment_manager_table" class="table">
+                    <thead>
+                    <tr id="id_inputHeaders1">
+                        <td width="3%"></td>
+                        <th width="20%"><h6><b>Domain<span class="asteriskField">*</b></h6></th>
+                        <th width="20%"><h6><b>Core Services<span class="asteriskField">*</b></h6></th>
+                        <th width="20%"><h6><b>Core services status<span class="asteriskField">*</b></h6></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr id="id_inputElements1">
+                        <td></td>
+                        <td width="20%">
+                            {{ form.payments_fields }}
+                        </td>
+                        <td width="20%">
+                            {{ form.payments_fields }}
+                            <div id="olmis_assessment_coreservice_errormsg" style="display:none;">
+                                <small><p class="dialog_paragraph">This value is required</p></small>
+                            </div>
+                        </td>
+
+                        <td width="15%">
+                            {{ form.payments_fields }}
+                            <h6><span id="sel_olmis_assessment_coreservice_status"></span></h6>
+                            <!-- <input id='holmis_assessment_coreservice_status' type='hidden'> -->
+                            <div id="olmis_assessment_coreservice_status_errormsg" style="display:none;">
+                                <small><p class="dialog_paragraph">This value is required</p></small>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!-- end col-6 -->
+            </fieldset>
+        </div>
+        <!-- end wizard step-1 -->
+    </div>
+    <!-- end row -->
+   
+    </body>
+    </html>
+{% endblock %}
